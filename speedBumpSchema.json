@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "type": { "const": "ObjectEvent" },
+        "eventTime": { "type": "string", "format": "date-time" },
+        "bizLocation": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "latitude": { "type": "number" },
+                "longitude": { "type": "number" }
+            },
+            "required": ["id", "latitude", "longitude"]
+        },
+        "speedBumpMaterial": {
+            "type": "string",
+            "enum": ["rubber", "asphalt", "plastic", "concrete"]
+        },
+        "dimensions": {
+            "type": "object",
+            "properties": {
+                "height": { "type": "number", "minimum": 0.05 },
+                "width": { "type": "number", "minimum": 0.5 }
+            },
+            "required": ["height", "width"]
+        },
+        "bizStep": {
+            "type": "string",
+            "enum": ["installation", "inspection", "repair"]
+        }
+    },
+    "required": [
+        "type",
+        "eventTime",
+        "bizLocation",
+        "speedBumpMaterial",
+        "dimensions",
+        "bizStep"
+    ]
+}
